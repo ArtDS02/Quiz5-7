@@ -4,40 +4,36 @@
  */
 package controller;
 
-import dao.CollectionDAO;
+import dao.EnrollDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import model.Collection;
+import model.Enrollment;
 
 /**
  *
  * @author Thinh
  */
-@WebServlet(name = "SearchCollection", urlPatterns = {"/SearchCollection"})
-public class SearchCollection extends HttpServlet {
+@WebServlet(name = "myEnrollment", urlPatterns = {"/myEnrollment"})
+public class myEnrollment extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        EnrollDAO dao = new EnrollDAO();
+        List<Enrollment> list = dao.getListEnrollByAccountId2(id);
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("myEnrollment.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String search = request.getParameter("search");
-        CollectionDAO dao = new CollectionDAO();
-        List<Collection> list = dao.SearchAllCollectionByName(search);
-
-        request.setAttribute("listCollectionDetail", list);
-        request.setAttribute("searchName", search);
-        request.getRequestDispatcher("SearchCollection.jsp").forward(request, response);
-        
     }
 
 }

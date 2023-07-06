@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dao.CollectionDAO;
+import dao.ExamDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,31 +13,29 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import model.Collection;
+import model.Exam;
 
 /**
  *
  * @author Thinh
  */
-@WebServlet(name = "SearchCollection", urlPatterns = {"/SearchCollection"})
-public class SearchCollection extends HttpServlet {
+@WebServlet(name = "myExams", urlPatterns = {"/myExams"})
+public class myExams extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int ExamId = Integer.parseInt(request.getParameter("id"));
+        ExamDAO dao = new ExamDAO();
+        List<Exam> list = dao.getListExamById(ExamId);
+
+        request.setAttribute("listExam", list);
+        request.getRequestDispatcher("myExams.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String search = request.getParameter("search");
-        CollectionDAO dao = new CollectionDAO();
-        List<Collection> list = dao.SearchAllCollectionByName(search);
-
-        request.setAttribute("listCollectionDetail", list);
-        request.setAttribute("searchName", search);
-        request.getRequestDispatcher("SearchCollection.jsp").forward(request, response);
-        
     }
 
 }

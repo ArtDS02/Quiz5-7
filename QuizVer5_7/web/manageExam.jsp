@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="en">
     <head>
-        <jsp:useBean id="a" class="dao.AccountDAO" scope="request"></jsp:useBean>
+        <jsp:useBean id="a" class="dao.ExamDAO" scope="request"></jsp:useBean>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta charset="utf-8">
             <meta name="description" content="">
@@ -164,8 +164,8 @@
 
             <section class="u-clearfix u-image u-section-2" id="carousel_bd30" data-image-width="1620" data-image-height="1080">
                 <center> 
-                    <h1>List User</h1>
-                    <h2 style="color:#000;">Number of Users: ${a.getListAccounts().size()}</h2>
+                    <h1>List Exams</h1>
+                    <h2 style="color:#000;">Number of Exams: ${a.getListExams().get(0).getTimeLimit()}</h2>
                 <div class="container-fluid-lg">
 
                     <div class="table-responsive">
@@ -175,14 +175,13 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>FirstName</th>
-                                    <th>LastName</th>
-                                    <th>UserName</th>
+                                    <th>Name</th>
                                     <th>Password</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>DOB</th>
-                                    <th>Role</th>
+                                    <th>Time Limit</th>
+                                    <th>Date</th>
+                                    <th>Question Number</th>
+                                    <th>AccountId</th>
+                                    <th>CollectionId</th>
                                     <th></th>
 
                                 </tr>
@@ -190,37 +189,29 @@
                             <tbody>
                                 <c:set var="pagesize" value="6"></c:set>
                                 <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
-                                <c:set var="NumPage" value="${a.getListAccounts().size()/6+1}"></c:set>
-                                <c:forEach items="${a.getListAccounts()}" var="b" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
+                                <c:set var="NumPage" value="${a.getListExams().size()/6+1}"></c:set>
+                                <c:forEach items="${a.getListExams()}" var="b" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
                                     <tr>
-                                        <td>${b.id}</td>
-                                        <td>${b.firstname}</td>
-                                        <td>${b.lastname}</td>
-                                        <td>${b.username}</td>
-                                        <td>${b.password}</td>
-                                        <td>${b.phone}</td>
-                                        <td style="overflow-x: scroll">${b.email}</td>
-                                        <td>${b.DOB}</td>
-                                        <c:if test = "${b.role == 1}">
-                                            <td>Teacher</td>
-                                        </c:if>
-                                        <c:if test = "${b.role == 2}">
-                                            <td>Student</td>
-                                        </c:if>
-                                        <c:if test = "${b.role == 0}">
-                                            <td>Admin</td>
-                                        </c:if>
+                                        <td>${b.getId()}</td>
+                                        <td>${b.getName()}</td>
+                                        <td>${b.getPassword()}</td>
+                                        <td>${b.getTimeLimit()}</td>
+                                        <td>${b.getDate()}</td>
+                                        <td>${b.getQuestionNumber()}</td>
+                                        <td>${b.getAccountId()}</td>
+                                        <td>${b.getCollectionId()}</td>
+                                        
                                         <td style="padding-left: 4px;padding-right: 4px;">
-                                            <c:set var="check" value="a${b.getId()}"></c:set>
-                                            <a class="edit" title="Edit" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="Update?id=${check}"><i
+                                            <c:set var="check" value="${b.getId()}"></c:set>
+                                            <a class="edit" title="Edit" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="UpdateExam?id=${check}"><i
                                                     class="material-icons">&#xE254;</i></a>
-                                            <a class="delete" title="Delete" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="Delete?id=${check}"><i
+                                            <a class="delete" title="Delete" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="DeleteExam?id=${check}"><i
                                                     class="material-icons">&#xE872;</i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
-                            <button style="background-color: black;margin-bottom: 10px;border-radius: 20px;border-color: white;"><a style="color:white;" href="CreateUser.jsp">Create new User</a></button>
+                            <button style="background-color: black;margin-bottom: 10px;border-radius: 20px;border-color: white;"><a style="color:white;" href="CreateExam.jsp">Create new Exam</a></button>
 
                         </table>
                     </div>

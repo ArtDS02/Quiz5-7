@@ -169,11 +169,11 @@
             </form>
             <div class="container-xxl py-5">
                 <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="mb-5">Exam</h1>
+                    </div>
                     <div  class="row g-4 justify-content-center">
-                        <c:set var="pagesize" value="3"></c:set>
-                        <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
-                        <c:set var="NumPage" value="${requestScope.listExam.size()/3+1}"></c:set>
-                        <c:forEach var="i" items="${requestScope.listExam}" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
+                        <c:forEach var="i" items="${requestScope.listExam}" >
                             <c:set var="ExamId" value="20"></c:set>
                                 <div class="col-lg-4 col-md-6 wow fadeInUp ani" data-wow-delay="0.1s">
                                     <div style="margin: 10px 0; border-radius: 10px" class="course-item bg-white">
@@ -182,18 +182,11 @@
                                         </div>
                                         <div class="text-center p-4 pb-0">
                                             <h3 class="mb-0">${i.name}</h3>
-                                        <div class="mb-3">
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small>(123)</small>
-                                        </div>
+                                        
                                         <h5 class="mb-4"></h5>
                                         <c:if test="${sessionScope.accountS!=null}">
-                                            <a href="examJoin?id=${i.id}" style="text-decoration: none">
-                                                <h1>Join</h1>
+                                            <a href="EnrollList?id=${i.id}" style="text-decoration: none">
+                                                <h1>Enrollment</h1>
                                             </a>
                                         </c:if>
                                     </div>
@@ -209,32 +202,6 @@
                             </div>
                         </c:forEach>
 
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: center; margin-top: 50px">
-
-                    <div class="pagination">
-                        <c:if  var="result" test="${NumPage > 2.0}">
-                            <a href="?page=1" class="previous">&laquo;</a>
-                            <c:if  var="result" test="${page > 1.0}">
-                                <a href="?page=${page-1}" class="previous"> Previous</a>
-                            </c:if>
-
-                            <c:if  var="result" test="${page == 1.0}">
-                                <a href="?page=1" class="previous"> Previous </a>
-                            </c:if>
-                        </c:if>
-                        <a href="#" class="active">${page}</a>
-                        <c:if  var="result" test="${NumPage > 2.0}">
-                            <c:if  var="result" test="${page < NumPage.intValue()}">
-                                <a href="?page=${page+1}" class="next"> Next </a>
-                            </c:if>
-
-                            <c:if  var="result" test="${page == NumPage.intValue()}">
-                                <a href="?page=${page}" class="next"> Next </a>
-                            </c:if>
-                            <a href="?page=${NumPage.intValue()}" class="next"> &raquo; </a>
-                        </c:if>
                     </div>
                 </div>
         </section>

@@ -3,9 +3,10 @@
     Created on : Jun 4, 2023, 3:12:47 PM
     Author     : W
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -267,90 +268,28 @@
             </div>
         </div>
         <!-- Navbar End -->
-        <h1 style="margin-top: 70px;font-family: courier, arial, helvetica;
-            "></h1>
-        <div class="wrapper">
-
-            <c:forEach items="${list}" var="i" begin="${(numPage-1)*pageSize}" end="${(numPage*pageSize)-1}">
-                <div class="container">
-
-                    <div class="question " id="a" onclick="showAnswer()">
-                        <div class="div-content">
-                            <h1>Q${(numPage-1)*pageSize+1}: ${i.detail}</h1>
-                            <p>A.${i.answerA}</p>
-                            <p>B.${i.answerB}</p>
-                            <p>C.${i.answerC}</p>
-                            <p>D.${i.answerD}</p>
-                        </div>
-                    </div>
-                    <div class="answer question" onclick="showAnswer()" id="answer">
-                        <p
-                            style="text-align: center; margin-top: calc(450px * 0.5 - 44.79px); transform: translate(0); font-size: 35px; font-weight: bold;">
-                            ${i.trueAnswer}</p>
-                    </div>
-
-                </div>
-            </c:forEach>
-            <div style="display: flex; flex-direction: column" class="option">
-                <div class="option-test">
-                    <a href="testoption?id=${requestScope.idd}"><i class="fa fa-solid fa fa-graduation-cap"></i>Test</a>
-                </div>
-                <c:if test="${sessionScope.accountS.id == requestScope.owner}"> 
-                    <div class="option-edit">
-                        <a href="EditOptionServlet?id=${requestScope.idd}"><i class="fa fa-solid fa fa-pen"></i>Edit</a>
-                    </div>
-                </c:if>
-
-
-            </div>
-        </div>
-        <div class="paggingmanage">
-            <div class="pagging active">
-                <a href="QuestionList?id=${requestScope.idd}"><<</a>  
-            </div>
-            <div class="pagging">
-                <a href="QuestionList?numPage=<fmt:formatNumber value="${(numPage!=1)?(numPage-1):1}" type="number" pattern="###"/>&id=${requestScope.idd}"><</a> 
-            </div>
-            <div class="pagging">
-                ${numPage}  
-            </div>
-            <div class="pagging">
-                <a href="QuestionList?numPage=<fmt:formatNumber value="${(numPage!=lastPage)?(numPage+1):lastPage}" type="number" pattern="###"/>&id=${requestScope.idd} ">></a>
-            </div>
-            <div class="pagging">
-                <a href="QuestionList?numPage=${list.size()}&id=${requestScope.idd}">>></a>
-            </div>
-        </div>
-
-        <c:forEach items="${list}" var="i">
+        <div class="content">
             <div class="learning">
                 <div class="learning-content">
-                    <p>Q${i.id - list.get(0).id+1}: ${i.detail}</p>
-                    <p>A.${i.answerA}</p>
-                    <p>B.${i.answerB}</p>
-                    <p>C.${i.answerC}</p>
-                    <p>D.${i.answerD}</p>                  
+                    <p> Collection ID</p>               
                 </div>
                 <div class="leaning-anwser">
-                    <p> ${i.trueAnswer}</p>    
+                    <p> Score</p>    
+                </div>
+            </div>
+        </div>
+        <c:forEach var="i" items="${requestScope.list}">
+            <div class="content">
+                <div class="learning">
+                    <div class="learning-content">
+                        <p> ${i.getCollectionId()}</p>               
+                    </div>
+                    <div class="leaning-anwser">
+                        <p> ${i.getScore()}</p>    
+                    </div>
                 </div>
             </div>
         </c:forEach>
-        <script>
-            function showAnswer(questionNumber) {
-                var answera = document.getElementById(a);
-                var answerElement = document.getElementById('answer');
 
-                if (answerElement.style.display === "none") {
-                    a.style.display = "none";
-                    answerElement.style.display = "block";
-                    answerElement.style.textAlign = "center";
-                } else {
-                    answerElement.style.display = "none";
-                    a.style.display = "block";
-                }
-            }
-
-        </script>
     </body>
 </html>

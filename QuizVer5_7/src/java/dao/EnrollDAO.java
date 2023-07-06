@@ -69,8 +69,26 @@ public class EnrollDAO {
         return null;
     }
     
+    public static List<Enrollment> getListEnrollByExamId(int ExamId){
+        String sql = "select * from Enrollment where ExamID=" + ExamId;
+        List<Enrollment> list = new ArrayList<>();
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Enrollment cd = new Enrollment(rs.getInt(1), rs.getInt(2), rs.getDouble(3));
+                list.add(cd);
+            }
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
 //        addEnroll(3, 1, 2.5);
-        System.out.println(getListEnrollByAccountId2(2));
+//        System.out.println(getListEnrollByAccountId2(1));
+        System.out.println(getListEnrollByExamId(1));
     }
 }

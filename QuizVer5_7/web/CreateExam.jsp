@@ -55,46 +55,11 @@
         </style>
     </head>
     <body>
-        <!-- Navbar Start -->
-        <div id="header">
-            <!-- Begin: Nav -->
-            <div style="height: 45px; margin-left: 25px "  class="header-logo">
-                <p class="title">FLearn</p>
-            </div>
-            <div class="header-content">
-                <ul id="nav">
-                    <li><a class="active" href="home.jsp">Home</a></li>
-                        <c:if test="${accountS.role ==0}"> 
-                        <li><a class="" href="admin.jsp">Admin Page</a></li>
-                        </c:if>
-                    <li><a class="" href="listcollectiondetail">Courses </a></li>
-                    <li><a class="" href="listExam?id=${accountS.id}">Exam</a></li>
-                        <c:if test="${sessionScope.accountS==null}">                
-                        <li><a  href="login.jsp">Join now</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.accountS!=null}">
-                        <li>
-                            <a href="#">
-                                Account: ${sessionScope.accountS.username}
-                            </a>
-                            <ul style="padding-left: 0" class="subnav">
-                                <li><a href="profileServlet?pid=${accountS.id}">My profile</a></li>
-                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
-                                        <c:if test="${sessionScope.accountS!=null}"> 
-                                        <li><a href="myCourses?id=${accountS.id}">My Courses</a></li>
-                                        </c:if>
-                                    </c:if>
-                                <li><a href="logoutServlet">Logout</a></li>
-                            </ul>
-                        </li>
-                    </c:if>
-                </ul>
-            </div>
-        </div>
+        
         <!-- Navbar End -->
         <div style="display: flex; justify-content: center; align-items: center; margin-top: 80px">
 
-            <form action="ShowExam" method="post">
+            <form action="CreateExam" method="post">
                 <h1 style="color: #06BBCC; margin-bottom: 30px; text-transform: uppercase; font-weight: bolder; margin-top: -50px">Create Exam</h1>
                 <table>
                     <tr>
@@ -123,8 +88,8 @@
                         <td><input name="questionNumber" type="text" class="form-control" required=""></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><input style="display:none" name="AccountId" type="text" class="form-control" value="${sessionScope.accountS.getId()}"></td>
+                        <td>AccountId:</td>
+                        <td><input name="AccountId" type="text" class="form-control" value="${sessionScope.accountS.getId()}"></td>
                     </tr>
                     <tr>
                         <td>CollectionId:</td>

@@ -20,16 +20,13 @@ import model.Question;
  *
  * @author Thinh
  */
-@WebServlet(name = "ShowExam", urlPatterns = {"/ShowExam"})
-public class ShowExam extends HttpServlet {
+@WebServlet(name = "CreateExam", urlPatterns = {"/CreateExam"})
+public class CreateExam extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ExamDAO dao = new ExamDAO();
-        List<Exam> list = dao.getListExams();
-        request.setAttribute("listExam", list);
-        request.getRequestDispatcher("allExamView.jsp").forward(request, response);
     }
 
     @Override
@@ -47,12 +44,12 @@ public class ShowExam extends HttpServlet {
         List<Question> list = collectionDao.getCollectionById(CollectionId);
         if (questionNumber <= list.size()) {
             examDao.createExam(name, password, timeLimit, date, questionNumber, AccountId, CollectionId);
-            List<Exam> listExam = examDao.getListExams();
-            request.setAttribute("listExam", listExam);
-            request.getRequestDispatcher("allExamView.jsp").forward(request, response);
+            response.sendRedirect("manageExam.jsp");
         } else {
-            response.sendRedirect("ExamSetting.jsp");
+            response.sendRedirect("CreateExam.jsp");
+            
         }
     }
+
 
 }

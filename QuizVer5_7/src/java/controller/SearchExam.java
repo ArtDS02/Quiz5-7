@@ -24,12 +24,7 @@ public class SearchExam extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String search = request.getParameter("searchName");
-        ExamDAO dao = new ExamDAO();
-        List<Exam> list = dao.searchListExamsByName(search);
-        request.setAttribute("listExam", list);
-        request.setAttribute("searchName", search);
-        request.getRequestDispatcher("allExamView.jsp").forward(request, response);
+        
     }
 
     @Override
@@ -40,7 +35,7 @@ public class SearchExam extends HttpServlet {
         List<Exam> list = dao.searchListExamsByName(search);
         request.setAttribute("listExam", list);
         request.setAttribute("searchName", search);
-        request.getRequestDispatcher("allExamView.jsp").forward(request, response);
+        request.getRequestDispatcher("SearchExam.jsp").forward(request, response);
     }
 
 }

@@ -225,19 +225,20 @@
         </style>
         <!--        <h1 style="margin-top: 70px;font-family: courier, arial, helvetica;
                     ">QuestionList</h1>-->
+        <!-- Navbar Start -->
         <div id="header">
             <!-- Begin: Nav -->
-            <div class="header-logo">
+            <div style="height: 45px; margin-left: 25px "  class="header-logo">
                 <p class="title">FLearn</p>
             </div>
-            <div style="margin-top: 0px" class="header-content">
+            <div class="header-content">
                 <ul id="nav">
                     <li><a class="active" href="home.jsp">Home</a></li>
                         <c:if test="${accountS.role ==0}"> 
                         <li><a class="" href="admin.jsp">Admin Page</a></li>
                         </c:if>
                     <li><a class="" href="listcollectiondetail">Courses </a></li>
-                    <li><a class="" href="#">Contact</a></li>
+                    <li><a class="" href="listExam?id=${accountS.id}">Exam</a></li>
                         <c:if test="${sessionScope.accountS==null}">                
                         <li><a  href="login.jsp">Join now</a></li>
                         </c:if>
@@ -245,10 +246,20 @@
                         <li>
                             <a href="#">
                                 Account: ${sessionScope.accountS.username}
-
                             </a>
-                            <ul class="subnav">
+                            <ul style="padding-left: 0" class="subnav">
                                 <li><a href="profileServlet?pid=${accountS.id}">My profile</a></li>
+                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
+                                        <c:if test="${sessionScope.accountS!=null}"> 
+                                        <li><a href="myCourses?id=${accountS.id}">My Courses</a></li>
+                                        </c:if>
+                                    </c:if>
+                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
+                                        <c:if test="${sessionScope.accountS!=null}"> 
+                                        <li><a href="myExams?id=${accountS.id}">My Exams</a></li>
+                                        </c:if>
+                                    </c:if>
+                                <li><a href="myEnrollment?id=${accountS.id}">My Enrollment</a></li>
                                 <li><a href="logoutServlet">Logout</a></li>
                             </ul>
                         </li>
@@ -256,6 +267,7 @@
                 </ul>
             </div>
         </div>
+        <!-- Navbar End -->
         <h1 style="margin-top: 70px;font-family: courier, arial, helvetica;
             ">Edit Option</h1>
 

@@ -78,7 +78,7 @@
             <div style="height: 45px; margin-left: 25px "  class="header-logo">
                 <p class="title">FLearn</p>
             </div>
-            <div class="header-content">    
+            <div class="header-content">
                 <ul id="nav">
                     <li><a class="active" href="home.jsp">Home</a></li>
                         <c:if test="${accountS.role ==0}"> 
@@ -101,6 +101,12 @@
                                         <li><a href="myCourses?id=${accountS.id}">My Courses</a></li>
                                         </c:if>
                                     </c:if>
+                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
+                                        <c:if test="${sessionScope.accountS!=null}"> 
+                                        <li><a href="myExams?id=${accountS.id}">My Exams</a></li>
+                                        </c:if>
+                                    </c:if>
+                                <li><a href="myEnrollment?id=${accountS.id}">My Enrollment</a></li>
                                 <li><a href="logoutServlet">Logout</a></li>
                             </ul>
                         </li>

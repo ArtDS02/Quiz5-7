@@ -135,14 +135,6 @@
                         <td><input type="submit" class="btn btn-success" value="Submit"></td>
                     </tr>
                 </table>
-                <!--            <input name="name" type="text" class="form-control" placeholder="name">
-                            <input name="password" type="text" class="form-control" placeholder="password">
-                            <input name="timeLimit" type="text" class="form-control" placeholder="timeLimit">
-                            <input name="date" type="date" class="form-control" placeholder="date">
-                            <input name="questionNumber" type="text" class="form-control" placeholder="questionNumber">
-                            <input style="display:none" name="AccountId" type="text" class="form-control" value="${sessionScope.accountS.getId()}">
-                            <input name="CollectionId" type="text" class="form-control" placeholder="CollectionId">
-                            <input type="submit" class="btn btn-success" value="Submit">-->
 
             </form>
         </div>

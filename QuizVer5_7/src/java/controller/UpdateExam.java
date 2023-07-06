@@ -20,21 +20,23 @@ import model.Question;
  *
  * @author Thinh
  */
-@WebServlet(name = "ShowExam", urlPatterns = {"/ShowExam"})
-public class ShowExam extends HttpServlet {
+@WebServlet(name = "UpdateExam", urlPatterns = {"/UpdateExam"})
+public class UpdateExam extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String id = request.getParameter("id");
         ExamDAO dao = new ExamDAO();
-        List<Exam> list = dao.getListExams();
-        request.setAttribute("listExam", list);
-        request.getRequestDispatcher("allExamView.jsp").forward(request, response);
+        Exam a = dao.getExamById(Integer.parseInt(id));
+        request.setAttribute("exam", a);
+        request.getRequestDispatcher("UpdateExam.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         int timeLimit = Integer.parseInt(request.getParameter("timeLimit"));
@@ -46,12 +48,11 @@ public class ShowExam extends HttpServlet {
         CollectionConnectDAO collectionDao = new CollectionConnectDAO();
         List<Question> list = collectionDao.getCollectionById(CollectionId);
         if (questionNumber <= list.size()) {
-            examDao.createExam(name, password, timeLimit, date, questionNumber, AccountId, CollectionId);
-            List<Exam> listExam = examDao.getListExams();
-            request.setAttribute("listExam", listExam);
-            request.getRequestDispatcher("allExamView.jsp").forward(request, response);
+            examDao.UpdateExam(id, name, password, timeLimit, date, questionNumber, AccountId, CollectionId);
+            response.sendRedirect("manageExam.jsp");
         } else {
-            response.sendRedirect("ExamSetting.jsp");
+            response.sendRedirect("UpdateExam.jsp");
+            
         }
     }
 

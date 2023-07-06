@@ -122,12 +122,6 @@
                                         <li><a href="myCourses?id=${accountS.id}">My Courses</a></li>
                                         </c:if>
                                     </c:if>
-                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
-                                        <c:if test="${sessionScope.accountS!=null}"> 
-                                        <li><a href="myExams?id=${accountS.id}">My Exams</a></li>
-                                        </c:if>
-                                    </c:if>
-                                <li><a href="myEnrollment?id=${accountS.id}">My Enrollment</a></li>
                                 <li><a href="logoutServlet">Logout</a></li>
                             </ul>
                         </li>
@@ -160,10 +154,7 @@
                 </form>
 
                 <div class="row">
-                    <c:set var="pagesize" value="3"></c:set>
-                    <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
-                    <c:set var="NumPage" value="${requestScope.listCollectionDetail.size()/3+1}"></c:set>
-                    <c:forEach var="i" items="${requestScope.listCollectionDetail}" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
+                    <c:forEach var="i" items="${requestScope.listCollectionDetail}" >
                         <div class="col-lg-4 col-md-12 mb-4">
                             <div style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); overflow: hidden" class="card">
                                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light wa"
@@ -194,29 +185,7 @@
                     </c:forEach>
                 </div>
 
-                <div class="pagination">
-                    <c:if  var="result" test="${NumPage > 2.0}">
-                        <a href="?page=1" class="previous">&laquo;</a>
-                        <c:if  var="result" test="${page > 1.0}">
-                            <a href="?page=${page-1}" class="previous"> Previous</a>
-                        </c:if>
-
-                        <c:if  var="result" test="${page == 1.0}">
-                            <a href="?page=1" class="previous"> Previous </a>
-                        </c:if>
-                    </c:if>
-                    <a href="#" class="active">${page}</a>
-                    <c:if  var="result" test="${NumPage > 2.0}">
-                        <c:if  var="result" test="${page < NumPage.intValue()}">
-                            <a href="?page=${page+1}" class="next"> Next </a>
-                        </c:if>
-
-                        <c:if  var="result" test="${page == NumPage.intValue()}">
-                            <a href="?page=${page}" class="next"> Next </a>
-                        </c:if>
-                        <a href="?page=${NumPage.intValue()}" class="next"> &raquo; </a>
-                    </c:if>
-                </div>
+                
             </div>
         </section>
     </body>

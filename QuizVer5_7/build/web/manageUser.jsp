@@ -7,34 +7,128 @@
             <meta charset="utf-8">
             <meta name="description" content="">
             <title>Home</title>
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <!-- Font Awesome -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
             <link rel="stylesheet" href="css/nicepage.css" media="screen">
             <link rel="stylesheet" href="css/Home.css" media="screen">
             <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
             <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
             <style>
                 #carousel_bd30{
-                    background-image: url("images/manageUserBg.jpg");
+                    /*background-image: url("images/manageUserBg.jpg");*/
+                    background-color: #eee;
                 }
                 h1{
                     margin-top: 50px;
-                    color:white;
+                    color:#000;
+                    opacity: 0.8;
                 }
-                th{
-                    background-color: rgba(0, 0, 0, 0.5);
-                    width:250px;
-                    border-radius: 15px;
+                .table-wrapper {
+                    width: 100%;
+                    margin: 30px auto;
+                    background: #fff;
+                    padding: 20px;
+                    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
                 }
-                td{
-                    background-color: rgba(0, 0, 0, 0.5);
-                    border-radius: 15px;
-                }
-                table{
 
-                    border: none;
-                    text-align: center;
-                    color: white;
-                    font-size: 20px;
+                .table-title {
+                    padding-bottom: 10px;
+                    margin: 0 0 10px;
                 }
+
+                .table-title h2 {
+                    margin: 6px 0 0;
+                    font-size: 22px;
+                }
+
+                .table-title .add-new {
+                    float: right;
+                    height: 30px;
+                    font-weight: bold;
+                    font-size: 12px;
+                    text-shadow: none;
+                    min-width: 100px;
+                    border-radius: 50px;
+                    line-height: 13px;
+                }
+
+                .table-title .add-new i {
+                    margin-right: 4px;
+                }
+
+                table.table {
+                    table-layout: fixed;
+                }
+
+                table.table tr th,
+                table.table tr td {
+                    border-color: #ccc;
+                    text-align: center;
+                }
+
+                table.table th i {
+                    font-size: 13px;
+                    margin: 0 5px;
+                    cursor: pointer;
+                }
+
+                table.table th:last-child {
+                    width: 100px;
+                }
+
+                table.table td a {
+                    cursor: pointer;
+                    display: inline-block;
+                    margin: 0 5px;
+                    min-width: 24px;
+                }
+
+                table.table td a.add {
+                    color: #27C46B;
+                }
+
+                table.table td a.edit {
+                    color: #FFC107;
+                }
+
+                table.table td a.delete {
+                    color: #E34724;
+                }
+
+                table.table td i {
+                    font-size: 19px;
+                }
+
+                table.table td a.add i {
+                    font-size: 24px;
+                    margin-right: -1px;
+                    position: relative;
+                    top: 3px;
+                }
+
+                table.table .form-control {
+                    height: 32px;
+                    line-height: 32px;
+                    box-shadow: none;
+                    border-radius: 2px;
+                }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+                table.table td .add {
+                    display: none;
+                }
+
             </style>
         </head>
         <body class="u-body u-xl-mode" data-lang="en">
@@ -71,55 +165,66 @@
             <section class="u-clearfix u-image u-section-2" id="carousel_bd30" data-image-width="1620" data-image-height="1080">
                 <center> 
                     <h1>List User</h1>
-                    <h2 style="color:white;">Number of Users: ${a.getListAccounts().size()}</h2>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>UserName</th>
-                            <th>Password</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>DOB</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:set var="pagesize" value="6"></c:set>
-                        <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
-                        <c:set var="NumPage" value="${a.getListAccounts().size()/6+1}"></c:set>
-                        <c:forEach items="${a.getListAccounts()}" var="b" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
-                            <tr>
-                                <td>${b.id}</td>
-                                <td>${b.firstname}</td>
-                                <td>${b.lastname}</td>
-                                <td>${b.username}</td>
-                                <td>${b.password}</td>
-                                <td>${b.phone}</td>
-                                <td>${b.email}</td>
-                                <td>${b.DOB}</td>
-                                <c:if test = "${b.role == 1}">
-                                    <td>Teacher</td>
-                                </c:if>
-                                <c:if test = "${b.role == 2}">
-                                    <td>Student</td>
-                                </c:if>
-                                <c:if test = "${b.role == 0}">
-                                    <td>Admin</td>
-                                </c:if>
-                                <td style="padding-left: 4px;padding-right: 4px;">
-                                    <c:set var="check" value="a${b.getId()}"></c:set>
-                                    <a style="padding-left: 4px;padding-right: 4px;" href="Update?id=${check}">Update</a>
-                                    <a style="padding-left: 4px;padding-right: 4px;" href="Delete?id=${check}">Delete</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                    <button style="background-color: black;margin-bottom: 10px;border-radius: 20px;border-color: white;"><a style="color:white;" href="CreateUser.jsp">Create new User</a></button>
+                    <h2 style="color:#000;">Number of Users: ${a.getListAccounts().size()}</h2>
+                <div class="container-fluid-lg">
 
-                </table>
+                    <div class="table-responsive">
+
+                        <table class="table table-bordered" style="text-align: ">
+
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>FirstName</th>
+                                    <th>LastName</th>
+                                    <th>UserName</th>
+                                    <th>Password</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>DOB</th>
+                                    <th>Role</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:set var="pagesize" value="6"></c:set>
+                                <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
+                                <c:set var="NumPage" value="${a.getListAccounts().size()/6+1}"></c:set>
+                                <c:forEach items="${a.getListAccounts()}" var="b" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
+                                    <tr>
+                                        <td>${b.id}</td>
+                                        <td>${b.firstname}</td>
+                                        <td>${b.lastname}</td>
+                                        <td>${b.username}</td>
+                                        <td>${b.password}</td>
+                                        <td>${b.phone}</td>
+                                        <td style="overflow-x: scroll">${b.email}</td>
+                                        <td>${b.DOB}</td>
+                                        <c:if test = "${b.role == 1}">
+                                            <td>Teacher</td>
+                                        </c:if>
+                                        <c:if test = "${b.role == 2}">
+                                            <td>Student</td>
+                                        </c:if>
+                                        <c:if test = "${b.role == 0}">
+                                            <td>Admin</td>
+                                        </c:if>
+                                        <td style="padding-left: 4px;padding-right: 4px;">
+                                            <c:set var="check" value="a${b.getId()}"></c:set>
+                                            <a class="edit" title="Edit" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="Update?id=${check}"><i
+                                                    class="material-icons">&#xE254;</i></a>
+                                            <a class="delete" title="Delete" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="Delete?id=${check}"><i
+                                                    class="material-icons">&#xE872;</i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            <button style="background-color: black;margin-bottom: 10px;border-radius: 20px;border-color: white;"><a style="color:white;" href="CreateUser.jsp">Create new User</a></button>
+
+                        </table>
+                    </div>
+                </div>
                 <a href="?page=1" class="previous"><<</a>
 
 
@@ -133,7 +238,7 @@
                     <a href="?page=1" class="previous"> < </a>
                 </c:if>
 
-                <a style="color:white;" href="">${page}</a>
+                <a style="color:#000;" href="">${page}</a>
 
                 <c:if  var="result" test="${page < NumPage.intValue()}">
                     <a href="?page=${page+1}" class="next"> > </a>

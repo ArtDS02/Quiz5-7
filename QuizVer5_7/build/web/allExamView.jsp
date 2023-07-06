@@ -101,14 +101,14 @@
         </head>
         <body>
             <!-- Navbar Start -->
-            <div id="header">
-                <!-- Begin: Nav -->
-                <div style="height: 45px; margin-left: 25px "  class="header-logo">
-                    <p class="title">FLearn</p>
-                </div>
-                <div class="header-content">
-                    <ul id="nav">
-                        <li><a class="active" href="home.jsp">Home</a></li>
+        <div id="header">
+            <!-- Begin: Nav -->
+            <div style="height: 45px; margin-left: 25px "  class="header-logo">
+                <p class="title">FLearn</p>
+            </div>
+            <div class="header-content">
+                <ul id="nav">
+                    <li><a class="active" href="home.jsp">Home</a></li>
                         <c:if test="${accountS.role ==0}"> 
                         <li><a class="" href="admin.jsp">Admin Page</a></li>
                         </c:if>
@@ -129,6 +129,12 @@
                                         <li><a href="myCourses?id=${accountS.id}">My Courses</a></li>
                                         </c:if>
                                     </c:if>
+                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
+                                        <c:if test="${sessionScope.accountS!=null}"> 
+                                        <li><a href="myExams?id=${accountS.id}">My Exams</a></li>
+                                        </c:if>
+                                    </c:if>
+                                <li><a href="myEnrollment?id=${accountS.id}">My Enrollment</a></li>
                                 <li><a href="logoutServlet">Logout</a></li>
                             </ul>
                         </li>
@@ -163,9 +169,6 @@
             </form>
             <div class="container-xxl py-5">
                 <div class="container">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h1 class="mb-5">Exam</h1>
-                    </div>
                     <div  class="row g-4 justify-content-center">
                         <c:set var="pagesize" value="3"></c:set>
                         <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
@@ -208,7 +211,6 @@
 
                     </div>
                 </div>
-                        <a>tim kiem: ${searchName}</a>
                 <div style="display: flex; justify-content: center; margin-top: 50px">
 
                     <div class="pagination">

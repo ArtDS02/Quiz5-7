@@ -111,11 +111,49 @@ public class ExamDAO {
         return null;
     }
 
+    public static void DeleteExam(int ExamId) {
+        String sql = "delete from Enrollment where ExamID=?\n"
+                + "delete from Exam where ExamID = ?";
+
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, ExamId);
+            ps.setInt(2, ExamId);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public static void UpdateExam(int id, String name, String password, int timeLimit, String date, int questionNumber, int AccountId, int CollectionId) {
+        try {
+            String query = "UPDATE Exam SET Name = ?, Password = ?, TimeLimit = ?, Date = ?, "
+                    + "QuestionNumber = ?, AccountID = ?, CollectionID = ? WHERE ExamID = ?";
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, password);
+            ps.setInt(3, timeLimit);
+            ps.setString(4, date);
+            ps.setInt(5, questionNumber);
+            ps.setInt(6, AccountId);
+            ps.setInt(7, CollectionId);
+            ps.setInt(8, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Hello");
+        }
+    }
+
     public static void main(String[] args) {
 //        System.out.println(getListExams()); // OK
 //        createExam("1","1",1,"1",1,1,1);
-        System.out.println(getExamById(3));
+//        System.out.println(getListExamById(1));
 //        System.out.println(getListExamById(2));
 //        System.out.println(searchListExamsByName("123"));
+//        DeleteCollection(11);
+//        System.out.println(getExamById(1));
+        UpdateExam(13,"13","13",13,"2023-07-12",13,1,2);
     }
 }

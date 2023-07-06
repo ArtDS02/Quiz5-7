@@ -14,8 +14,8 @@
     </head>
     <body>
         <div class="form_register">
-            <form action="CreateUser" method="post">
-                <h1 class="register_heading">Create User</h1>
+            <form action="CreateNewUser" method="post">
+                <h1 class="register_heading">Create New User</h1>
                 <lable class="register_text">FirstName</lable>
                 <input type="text" class="register_input" name="FirstName">
                 <lable class="register_text">LastName</lable>
