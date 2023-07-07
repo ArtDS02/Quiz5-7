@@ -245,12 +245,12 @@ public class CollectionDAO {
 
     public static void main(String[] args) {
 //        System.out.println(getCollectionByAccountId(2));
-//        System.out.println(getCollectionById(1).getAccountID().getId());
+        System.out.println(getCollectionById(1).getAccountID().getId());
 //        System.out.println(getAllCollection());
 //        System.out.println(getCollectionById(1));
 //        UpdateCollection(4, "444", 1, 1);
 //        DeleteCollection(5);
-        System.out.println(SearchAllCollectionByName("i"));
+//        System.out.println(SearchAllCollectionByName("i"));
     }
 
 }

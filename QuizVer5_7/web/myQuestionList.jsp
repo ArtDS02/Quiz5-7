@@ -298,6 +298,9 @@
                 <div class="option-edit">
                     <a href="EditOptionServlet?id=${requestScope.idd}"><i class="fa fa-solid fa fa-pen"></i>Edit</a>
                 </div>
+                <div class="option-edit">
+                    <a href="NewExam?id=${requestScope.idd}"><i class="fa fa-solid fa fa-pen"></i>New Exam</a>
+                </div>
             </div>
         </div>
         <div class="paggingmanage">

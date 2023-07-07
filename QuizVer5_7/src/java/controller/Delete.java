@@ -6,6 +6,8 @@ package controller;
 
 import dao.AccountDAO;
 import static dao.AccountDAO.getAccount;
+import dao.CollectionDAO;
+import dao.ExamDAO;
 import dao.QuestionDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,6 +16,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import model.Exam;
 
 /**
  *
@@ -48,6 +52,18 @@ public class Delete extends HttpServlet {
                 request.getRequestDispatcher("EditOptionServlet").forward(request, response);
 //                response.sendRedirect("EditOptionServlet");
                 break;
+            }
+            case 'e': {
+                ExamDAO dao = new ExamDAO();
+                int ExamId = Integer.parseInt(id.substring(1));
+                int AccountId = dao.getExamById(ExamId).getAccountId();
+
+                dao.DeleteExam(Integer.parseInt(id.substring(1)));
+                List<Exam> list = dao.getListExamById(AccountId);
+
+                request.setAttribute("listExam", list);
+                request.getRequestDispatcher("myExams.jsp").forward(request, response);
+
             }
             default:
                 break;

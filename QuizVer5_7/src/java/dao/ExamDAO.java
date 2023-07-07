@@ -154,6 +154,7 @@ public class ExamDAO {
 //        System.out.println(searchListExamsByName("123"));
 //        DeleteCollection(11);
 //        System.out.println(getExamById(1));
-        UpdateExam(13,"13","13",13,"2023-07-12",13,1,2);
+//        UpdateExam(13,"13","13",13,"2023-07-12",13,1,2);
+        System.out.println(getExamById(1).getAccountId());
     }
 }

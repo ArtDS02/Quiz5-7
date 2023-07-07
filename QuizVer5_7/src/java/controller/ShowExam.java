@@ -47,9 +47,9 @@ public class ShowExam extends HttpServlet {
         List<Question> list = collectionDao.getCollectionById(CollectionId);
         if (questionNumber <= list.size()) {
             examDao.createExam(name, password, timeLimit, date, questionNumber, AccountId, CollectionId);
-            List<Exam> listExam = examDao.getListExams();
-            request.setAttribute("listExam", listExam);
-            request.getRequestDispatcher("allExamView.jsp").forward(request, response);
+            List<Exam> list1 = examDao.getListExamById(AccountId);
+            request.setAttribute("listExam", list1);
+            request.getRequestDispatcher("myExams.jsp").forward(request, response);
         } else {
             response.sendRedirect("ExamSetting.jsp");
         }

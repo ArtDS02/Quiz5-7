@@ -84,6 +84,12 @@
                                         <li><a href="myCourses?id=${accountS.id}">My Courses</a></li>
                                         </c:if>
                                     </c:if>
+                                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
+                                        <c:if test="${sessionScope.accountS!=null}"> 
+                                        <li><a href="myExams?id=${accountS.id}">My Exams</a></li>
+                                        </c:if>
+                                    </c:if>
+                                <li><a href="myEnrollment?id=${accountS.id}">My Enrollment</a></li>
                                 <li><a href="logoutServlet">Logout</a></li>
                             </ul>
                         </li>
@@ -92,6 +98,8 @@
             </div>
         </div>
         <!-- Navbar End -->
+        
+        
         <div style="display: flex; justify-content: center; align-items: center; margin-top: 80px">
 
             <form action="ShowExam" method="post">
@@ -128,7 +136,7 @@
                     </tr>
                     <tr>
                         <td>CollectionId:</td>
-                        <td><input name="CollectionId" type="text" class="form-control" required=""></td>
+                        <td><input name="CollectionId" type="text" class="form-control" value="${collectionId}"></td>
                     </tr>
                     <tr>
                         <td></td>

@@ -147,14 +147,6 @@
         <h1 style="margin: 80px 0;"></h1>  
         <section style="margin-top: 30px">
 
-            <div style="margin: 10px 0; display: flex; justify-content: center">
-
-                <c:if test="${sessionScope.accountS.getRole()!=2}"> 
-                    <c:if test="${sessionScope.accountS!=null}"> 
-                        <a href="ExamSetting.jsp" class="mt-1 mb-1 add" style="text-decoration: none;font-size: 20px; padding: 20px; font-weight: bold;  border-radius: 10px">Create Exam</a>
-                    </c:if>
-                </c:if>
-            </div>
 
             <form style="margin: 20px auto; width: 75% " action="SearchExam" method="post">
                 <div class="input-group">
@@ -182,14 +174,6 @@
                                         </div>
                                         <div class="text-center p-4 pb-0">
                                             <h3 class="mb-0">${i.name}</h3>
-                                        <div class="mb-3">
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small class="fa fa-star text-primary"></small>
-                                            <small>(123)</small>
-                                        </div>
                                         <h5 class="mb-4"></h5>
                                         <c:if test="${sessionScope.accountS!=null}">
                                             <a href="examJoin?id=${i.id}" style="text-decoration: none">

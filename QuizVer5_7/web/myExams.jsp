@@ -97,18 +97,28 @@
                     transition: 0.7s;
                     cursor: pointer;
                 }
+                .delete-button{
+                    position: absolute;
+                    left: 15px;
+                    top: 10px;
+                    background-color:white;
+                    z-index: 5;
+                    text-decoration: none;
+                    color: black;
+                    
+                }
             </style>
         </head>
         <body>
             <!-- Navbar Start -->
-        <div id="header">
-            <!-- Begin: Nav -->
-            <div style="height: 45px; margin-left: 25px "  class="header-logo">
-                <p class="title">FLearn</p>
-            </div>
-            <div class="header-content">
-                <ul id="nav">
-                    <li><a class="active" href="home.jsp">Home</a></li>
+            <div id="header">
+                <!-- Begin: Nav -->
+                <div style="height: 45px; margin-left: 25px "  class="header-logo">
+                    <p class="title">FLearn</p>
+                </div>
+                <div class="header-content">
+                    <ul id="nav">
+                        <li><a class="active" href="home.jsp">Home</a></li>
                         <c:if test="${accountS.role ==0}"> 
                         <li><a class="" href="admin.jsp">Admin Page</a></li>
                         </c:if>
@@ -147,26 +157,6 @@
         <h1 style="margin: 80px 0;"></h1>  
         <section style="margin-top: 30px">
 
-            <div style="margin: 10px 0; display: flex; justify-content: center">
-
-                <c:if test="${sessionScope.accountS.getRole()!=2}"> 
-                    <c:if test="${sessionScope.accountS!=null}"> 
-                        <a href="ExamSetting.jsp" class="mt-1 mb-1 add" style="text-decoration: none;font-size: 20px; padding: 20px; font-weight: bold;  border-radius: 10px">Create Exam</a>
-                    </c:if>
-                </c:if>
-            </div>
-
-            <form style="margin: 20px auto; width: 75% " action="SearchExam" method="post">
-                <div class="input-group">
-                    <input style="display:none" type="text" class="form-control" name="searchName" value="${searchName}">
-                    <input type="text" class="form-control" placeholder="Search for Collection"  name="search" value="${searchName}">
-                    <div class="input-group-append">
-                        <button type="submit" class="input-group-text bg-transparent text-primary">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
             <div class="container-xxl py-5">
                 <div class="container">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -176,13 +166,15 @@
                         <c:forEach var="i" items="${requestScope.listExam}" >
                             <c:set var="ExamId" value="20"></c:set>
                                 <div class="col-lg-4 col-md-6 wow fadeInUp ani" data-wow-delay="0.1s">
+                                    <c:set var="check" value="e${i.getId()}"></c:set>
+                                    <a class="delete-button" href="Delete?id=${check}">Delete</a>
                                     <div style="margin: 10px 0; border-radius: 10px" class="course-item bg-white">
                                         <div class="position-relative overflow-hidden">
                                             <img class="img-fluid" src="img/course-2.jpg" alt="">
                                         </div>
                                         <div class="text-center p-4 pb-0">
                                             <h3 class="mb-0">${i.name}</h3>
-                                        
+
                                         <h5 class="mb-4"></h5>
                                         <c:if test="${sessionScope.accountS!=null}">
                                             <a href="EnrollList?id=${i.id}" style="text-decoration: none">
