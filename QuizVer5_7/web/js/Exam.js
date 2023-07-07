@@ -3,8 +3,10 @@ function startCountdown() {
     var form = document.getElementById("form");
     var list = document.getElementById("questionList");
     var number = parseInt(inputElement.value);
+    var countdownButton2 = document.getElementById("countdown-button");
 
     form.style.display = "flex";
+    countdownButton2.style.display = "none";
     var countdownDisplay = document.getElementById("countdown-display");
     var countdownInterval = setInterval(function () {
         if (number <= 0) {

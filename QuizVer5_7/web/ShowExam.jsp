@@ -302,17 +302,25 @@
                 var form = document.getElementById("form");
                 var list = document.getElementById("questionList");
                 var number = parseInt(inputElement.value);
+                var countdownButton2 = document.getElementById("countdown-button");
+
+                var totalTimeInSeconds = number * 60;
 
                 form.style.display = "block";
+                countdownButton2.style.display = "none";
                 var countdownDisplay = document.getElementById("countdown-display");
                 var countdownInterval = setInterval(function () {
-                    if (number <= 0) {
+                    if (totalTimeInSeconds <= 0) {
                         clearInterval(countdownInterval);
                         countdownDisplay.innerHTML = "Time out!";
                         list.style.display = "none";
                     } else {
-                        countdownDisplay.innerHTML = number;
-                        number--;
+                        var minutesRemaining = Math.floor(totalTimeInSeconds / 60);
+                        var secondsRemaining = totalTimeInSeconds % 60;
+
+                        countdownDisplay.innerHTML = minutesRemaining + " minutes, " +
+                        secondsRemaining + " second";
+                        totalTimeInSeconds--;
                     }
                 }, 1000);
             }

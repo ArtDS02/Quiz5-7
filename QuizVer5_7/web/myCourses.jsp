@@ -130,7 +130,7 @@
                 <div class="content">
                     <p> ${i.name}</p>
                     <p>Author: ${i.accountID.firstname} ${i.accountID.lastname}</p>
-                    <a href="QuestionList?id=${i.id}" style="text-decoration: none"><h1>Detail</h1></a>
+                    <a href="myCourseDetail?id=${i.id}" style="text-decoration: none"><h1>Detail</h1></a>
                 </div>
 
             </c:forEach>
