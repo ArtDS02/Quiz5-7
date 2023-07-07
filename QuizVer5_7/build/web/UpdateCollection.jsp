@@ -16,14 +16,14 @@
         <div class="form_register">
             <form action="UpdateCollection" method="post">
                 <h1 class="register_heading">Update Collection</h1>
-                <input value="${st.getId()}" type="text" id="id" name="id"><br><br>
+                <input style="display: none" value="${st.getId()}" type="text" id="id" name="id"><br><br>
                 <lable class="register_text">Name:</lable>
-                <input type="text" class="register_input" name="name" placeholder="">
+                <input type="text" class="register_input" name="name" placeholder="" required="">
                 <lable class="register_text">Status:</lable><br>
-                Private<input type="radio" value="0" name="status"><br>
-                Share<input type="radio" value="1" name="status"><br>
+                Private<input type="radio" value="0" name="status" required=""><br>
+                Share<input type="radio" value="1" name="status" required=""><br>
                 <lable class="register_text">Author:</lable>
-                <input type="text" class="register_input" name="Author">
+                <input type="text" class="register_input" name="Author" required="">
                 <button class="register_btn" type="submit">Create</button>
             </form>
         </div>

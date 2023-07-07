@@ -30,13 +30,17 @@ public class CreateCollection extends HttpServlet {
         String name = request.getParameter("name");
         String status = request.getParameter("status");
         String Author = request.getParameter("Author");
-
-        if (name.equals("") || status.equals("") || Author.equals("")) {
-            response.sendRedirect("CreateCollection.jsp");
+        if (Author.matches("\\d+")) {
+            if (name.equals("") || status.equals("") || Author.equals("")) {
+                response.sendRedirect("CreateCollection.jsp");
+            } else {
+                CollectionDAO dao = new CollectionDAO();
+                dao.createCollection(name, Integer.parseInt(status), Integer.parseInt(Author));
+                response.sendRedirect("manageCollection.jsp");
+            }
         } else {
-            CollectionDAO dao = new CollectionDAO();
-            dao.createCollection(name, Integer.parseInt(status), Integer.parseInt(Author));
-            response.sendRedirect("manageCollection.jsp");
+            response.sendRedirect("CreateCollection.jsp");
         }
+
     }
 }

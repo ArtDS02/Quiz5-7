@@ -23,7 +23,6 @@ import model.Question;
 @WebServlet(name = "CreateExam", urlPatterns = {"/CreateExam"})
 public class CreateExam extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,24 +31,29 @@ public class CreateExam extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        int timeLimit = Integer.parseInt(request.getParameter("timeLimit"));
-        String date = request.getParameter("date");
-        int questionNumber = Integer.parseInt(request.getParameter("questionNumber"));
-        int AccountId = Integer.parseInt(request.getParameter("AccountId"));
-        int CollectionId = Integer.parseInt(request.getParameter("CollectionId"));
-        ExamDAO examDao = new ExamDAO();
-        CollectionConnectDAO collectionDao = new CollectionConnectDAO();
-        List<Question> list = collectionDao.getCollectionById(CollectionId);
-        if (questionNumber <= list.size()) {
-            examDao.createExam(name, password, timeLimit, date, questionNumber, AccountId, CollectionId);
-            response.sendRedirect("manageExam.jsp");
+        if (request.getParameter("timeLimit").matches("\\d+") && request.getParameter("questionNumber").matches("\\d+") && request.getParameter("AccountId").matches("\\d+") && request.getParameter("CollectionId").matches("\\d+")) {
+            // la so
+            String name = request.getParameter("name");
+            String password = request.getParameter("password");
+            int timeLimit = Integer.parseInt(request.getParameter("timeLimit"));
+            String date = request.getParameter("date");
+            int questionNumber = Integer.parseInt(request.getParameter("questionNumber"));
+            int AccountId = Integer.parseInt(request.getParameter("AccountId"));
+            int CollectionId = Integer.parseInt(request.getParameter("CollectionId"));
+            ExamDAO examDao = new ExamDAO();
+            CollectionConnectDAO collectionDao = new CollectionConnectDAO();
+            List<Question> list = collectionDao.getCollectionById(CollectionId);
+            if (questionNumber <= list.size()) {
+                examDao.createExam(name, password, timeLimit, date, questionNumber, AccountId, CollectionId);
+                response.sendRedirect("manageExam.jsp");
+            } else {
+                response.sendRedirect("CreateExam.jsp");
+            }
         } else {
+            //khong la so
             response.sendRedirect("CreateExam.jsp");
-            
         }
-    }
 
+    }
 
 }

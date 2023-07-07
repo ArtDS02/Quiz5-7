@@ -63,7 +63,7 @@
                 <h1 style="color: #06BBCC; margin-bottom: 30px; text-transform: uppercase; font-weight: bolder; margin-top: -50px">Create Exam</h1>
                 <table>
                     <tr>
-                        <td><input name="id" type="text" class="form-control" required="" value="${exam.getId()}"></td>
+                        <td><input style="display:none" name="id" type="text" class="form-control" required="" value="${exam.getId()}"></td>
                     </tr>
                     <tr>
                         <td>Name Exam:</td>
@@ -88,7 +88,7 @@
                     </tr>
                     <tr>
                         <td>QuestionNumber:</td>
-                        <td><input name="questionNumber" type="text" class="form-control" required="" placeholder="${exam.getQuestionNumber()}></td>
+                        <td><input name="questionNumber" type="text" class="form-control" required="" placeholder="${exam.getQuestionNumber()}"></td>
                     </tr>
                     <tr>
                         <td>AccountId:</td>

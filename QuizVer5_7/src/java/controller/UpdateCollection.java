@@ -38,17 +38,26 @@ public class UpdateCollection extends HttpServlet {
         String name = request.getParameter("name");
         String status = request.getParameter("status");
         String Author = request.getParameter("Author");
-
-        if (name.equals("") || status.equals("") || Author.equals("")) {
+        if (Author.matches("\\d+")) {
+            //la so
+            if (name.equals("") || status.equals("") || Author.equals("")) {
+                CollectionDAO dao = new CollectionDAO();
+                Collection s = dao.getCollectionById(Integer.parseInt(id));
+                request.setAttribute("st", s);
+                response.sendRedirect("UpdateCollection.jsp");
+            } else {
+                CollectionDAO dao = new CollectionDAO();
+                dao.UpdateCollection(Integer.parseInt(id), name, Integer.parseInt(status), Integer.parseInt(Author));
+                response.sendRedirect("manageCollection.jsp");
+            }
+        } else {
+            //kh phai so
             CollectionDAO dao = new CollectionDAO();
             Collection s = dao.getCollectionById(Integer.parseInt(id));
             request.setAttribute("st", s);
-            response.sendRedirect("UpdateCollection.jsp");
-        } else {
-            CollectionDAO dao = new CollectionDAO();
-            dao.UpdateCollection(Integer.parseInt(id), name, Integer.parseInt(status), Integer.parseInt(Author));
-            response.sendRedirect("manageCollection.jsp");
+            request.getRequestDispatcher("UpdateCollection.jsp").forward(request, response);
         }
+
     }
 
 }

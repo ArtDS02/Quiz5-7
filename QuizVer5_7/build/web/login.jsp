@@ -44,10 +44,7 @@
                         </div>
                         <div class="flex-sb-m w-full p-t-3 p-b-32">
                             <div class="contact100-form-checkbox">
-                                <!--                                <input class="input-checkbox100" id="ckb1" type="checkbox" name="rememberme" value="1">
-                                                                <label class="label-checkbox100" for="ckb1">
-                                                                    Remember me
-                                                                </label>-->
+
                                 <a href="changepass.jsp" class="txt1">
                                     Change Password
                                 </a>
