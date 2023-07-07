@@ -101,7 +101,7 @@
                     position: absolute;
                     left: 15px;
                     top: 10px;
-                    background-color:white;
+                    background-color:grey;
                     z-index: 5;
                     text-decoration: none;
                     color: black;

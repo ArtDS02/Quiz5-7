@@ -156,10 +156,6 @@
                         <td><input type="submit"></td>
                     </tr>
                 </table>
-                <!--                Course name<input type="text" name="name"> <br>
-                                Private<input type="radio" value="0" name="status"><br>
-                                Share<input type="radio" value="1" name="status"><br>
-                                <input type="submit">-->
             </form>
         </div>
     </body>

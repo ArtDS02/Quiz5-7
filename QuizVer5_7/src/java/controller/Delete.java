@@ -17,6 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import model.Collection;
 import model.Exam;
 
 /**
@@ -63,7 +64,18 @@ public class Delete extends HttpServlet {
 
                 request.setAttribute("listExam", list);
                 request.getRequestDispatcher("myExams.jsp").forward(request, response);
+            }
+            case 'c': {
+                CollectionDAO dao = new CollectionDAO();
+                int CollectionId = Integer.parseInt(id.substring(1));
+                int AccountId = dao.getCollectionById(CollectionId).getAccountID().getId();
 
+                dao.DeleteCollection(CollectionId);
+
+                List<Collection> list = dao.getCollectionByAccountId(AccountId);
+
+                request.setAttribute("listCollectionDetail", list);
+                request.getRequestDispatcher("myCourses.jsp").forward(request, response);
             }
             default:
                 break;
