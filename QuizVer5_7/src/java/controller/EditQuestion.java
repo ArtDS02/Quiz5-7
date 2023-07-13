@@ -25,9 +25,11 @@ public class EditQuestion extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
+        String cid = request.getParameter("collectionId");
         QuestionDAO dao = new QuestionDAO();
         Question s = dao.getQuestion(id);
         request.setAttribute("st", s);
+        request.setAttribute("collectionId", cid);
         request.getRequestDispatcher("UpdateQuestion.jsp").forward(request, response);
     }
 

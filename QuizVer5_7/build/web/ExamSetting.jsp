@@ -134,9 +134,9 @@
                         <td></td>
                         <td><input style="display:none" name="AccountId" type="text" class="form-control" value="${sessionScope.accountS.getId()}"></td>
                     </tr>
-                    <tr>
+                    <tr style="display:none">
                         <td>CollectionId:</td>
-                        <td><input name="CollectionId" type="text" class="form-control" value="${collectionId}"></td>
+                        <td><input name="CollectionId" type="text" class="form-control" value="${collectionId}" ></td>
                     </tr>
                     <tr>
                         <td></td>

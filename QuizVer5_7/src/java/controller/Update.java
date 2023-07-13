@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import model.Account;
 import model.Question;
 
@@ -96,6 +97,7 @@ public class Update extends HttpServlet {
                 break;
             }
             case 'e': {
+                int cid = Integer.parseInt(request.getParameter("cid"));
                 QuestionDAO dao = new QuestionDAO();
                 String detail = request.getParameter("Detail");
                 String answerA = request.getParameter("AnswerA");
@@ -109,7 +111,13 @@ public class Update extends HttpServlet {
                     String numericId = id.replaceAll("[^0-9]", "");
                     int questionId = Integer.parseInt(numericId);
                     dao.UpdateQuestion(detail, answerA, answerB, answerC, answerD, trueAnswer, questionId);
-                    response.sendRedirect("home.jsp");
+//                    QuestionDAO dao = new QuestionDAO();
+                    int lastPage = dao.lastPagesP(1, cid);
+                    List<Question> list = dao.getQuestionByID(cid);
+                    request.setAttribute("list", list);
+                    request.setAttribute("idd", cid);
+                    request.getRequestDispatcher("EditOption.jsp").forward(request, response);
+//                    response.sendRedirect("home.jsp");
                 }
                 break;
             }

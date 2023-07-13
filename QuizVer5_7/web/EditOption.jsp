@@ -298,7 +298,7 @@
                 <c:set var="check" value="${i.id}o${requestScope.idd}"></c:set>
                     <div class="leaning-anwser">
                         <div class="option-copy_paste">
-                            <a href="EditQuestion?id=${i.id}"><i class="fa fa-solid fa fa-pen"></i> Edit</a>
+                            <a href="EditQuestion?id=${i.id}&collectionId=${requestScope.idd}"><i class="fa fa-solid fa fa-pen"></i> Edit</a>
                         </div>  
                         <div class="option-copy_paste">
                             <a href="DeleteOption?id=${check}"><i class="fa fa-trash"></i> Delete</a>

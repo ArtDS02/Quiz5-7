@@ -149,7 +149,7 @@
                     </tr>
                     <tr>
                         <td>Share:</td>
-                        <td><input type="radio" value="1" name="status"></td>
+                        <td><input type="radio" value="1" name="status" required=""></td>
                     </tr>
                     <tr>
                         <td></td>

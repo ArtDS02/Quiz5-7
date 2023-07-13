@@ -147,15 +147,6 @@
         <h1 style="margin: 80px 0;"></h1>  
         <section style="margin-top: 30px">
 
-            <div style="margin: 10px 0; display: flex; justify-content: center">
-
-                <c:if test="${sessionScope.accountS.getRole()!=2}"> 
-                    <c:if test="${sessionScope.accountS!=null}"> 
-                        <a href="ExamSetting.jsp" class="mt-1 mb-1 add" style="text-decoration: none;font-size: 20px; padding: 20px; font-weight: bold;  border-radius: 10px">Create Exam</a>
-                    </c:if>
-                </c:if>
-            </div>
-
             <form style="margin: 20px auto; width: 75% " action="SearchExam" method="post">
                 <div class="input-group">
                     <input style="display:none" type="text" class="form-control" name="searchName" value="${searchName}">

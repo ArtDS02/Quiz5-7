@@ -164,7 +164,7 @@
                         <div class="col-lg-4 col-md-12 mb-4">
                             <div style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); overflow: hidden" class="card">
                                 <c:set var="check" value="c${i.getId()}"></c:set>
-                                <a class="delete-button" href="Delete?id=${check}">Delete ${check}</a>
+                                <a class="delete-button" href="Delete?id=${check}">Delete</a>
                                 <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light wa"
                                      data-mdb-ripple-color="light">
                                     <img style="height: 180px;" src="https://img.freepik.com/free-vector/set-hand-drawn-questionnaire-elements_23-2147596295.jpg?size=626&ext=jpg&ga=GA1.1.939347458.1685442295&semt=ais"

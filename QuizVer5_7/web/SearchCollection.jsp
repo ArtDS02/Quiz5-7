@@ -141,13 +141,6 @@
         <section style="margin-top: 30px">
 
             <div class="text-center container py-5">
-                <div style="margin: 20px 0; display: inline-block; text-align: center;">
-                    <c:if test="${sessionScope.accountS.getRole()!=2}"> 
-                        <c:if test="${sessionScope.accountS!=null}"> 
-                            <a style="font-size: 20px; padding: 20px; font-weight: bold;  border-radius: 10px" class="mt-4 mb-5 add" href="newCourse.jsp">Add New course</a>
-                        </c:if>
-                    </c:if>
-                </div>
                 <form style="margin: 20px 0" action="SearchCollection" method="post">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for Collection"  name="search" value="${searchName}">

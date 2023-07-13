@@ -19,6 +19,7 @@
                 <h1 class="register_heading">Edit Question</h1>
                 <c:set var="check" value="e${st.getId()}"></c:set>
                 <input style="display:none" value="${check}" type="text" id="id" name="id"><br><br>
+                <input style="display:none" value="${collectionId}" type="text" id="cid" name="cid">
                 <lable class="register_text">Detail</lable>
                 <input type="text" value="${st.detail}" class="register_input" name="Detail">
                 <lable class="register_text">Answer A</lable>
