@@ -30,8 +30,19 @@
                 <input type="text" value="${st.answerC}" class="register_input" name="AnswerC">
                 <lable class="register_text">Answer D</lable>
                 <input type="text" value="${st.answerD}" class="register_input" name="AnswerD">
-                <lable class="register_text">True Answer</lable>
-                <input type="text" value="${st.trueAnswer}" class="register_input" name="TrueAnswer">
+<!--                <lable class="register_text">True Answer</lable>
+                <input type="text" value="${st.trueAnswer}" class="register_input" name="TrueAnswer">-->
+                <tr>
+                    <td><h1>True Anwser</h1></td>
+                    <td>            
+                        <select name="TrueAnswer" required="">
+                            <option value="A"><h1>A</h1></option>
+                            <option value="B"><h1>B</h1></option>
+                            <option value="C"><h1>C</h1></option>
+                            <option value="D"><h1>D</h1></option>
+                        </select>
+                    </td>
+                </tr>
                 <button class="register_btn" type="submit">Update</button>
             </form>
         </div>    

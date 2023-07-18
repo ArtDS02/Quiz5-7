@@ -38,6 +38,8 @@ Create Table [CollectionConnect](
 	Primary Key (CollectionID, QuestionID)
 )
 
+select * from Enrollment
+
 Create Table Exam(
 	ExamID Int IDENTITY(1,1) PRIMARY KEY,
 	[Name] NVarchar(50),
@@ -58,6 +60,12 @@ Create Table Enrollment(
 	Score float,
 	Primary Key(AccountID, ExamID)
 )
+
+drop table Question
+drop table Collection
+drop table CollectionConnect
+drop table Exam
+drop table Enrollment
 
 
 ---------------------------------------------------------------------------

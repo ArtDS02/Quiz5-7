@@ -20,8 +20,8 @@
                 <lable class="register_text">Name:</lable>
                 <input type="text" class="register_input" name="name" placeholder="" required="">
                 <lable class="register_text">Status:</lable><br>
-                Private<input type="radio" value="0" name="status" required=""><br>
-                Share<input type="radio" value="1" name="status" required=""><br>
+                <h1>Private</h1><input type="radio" value="0" name="status" required=""><br>
+                <h1>Share</h1><input type="radio" value="1" name="status" required=""><br>
                 <lable class="register_text">Author:</lable>
                 <input type="text" class="register_input" name="Author" required="">
                 <button class="register_btn" type="submit">Create</button>
