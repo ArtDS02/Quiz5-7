@@ -7,13 +7,21 @@
             <meta charset="utf-8">
             <meta name="description" content="">
             <title>Home</title>
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <!-- Font Awesome -->
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
             <link rel="stylesheet" href="css/nicepage.css" media="screen">
             <link rel="stylesheet" href="css/Home.css" media="screen">
             <script class="u-script" type="text/javascript" src="js/jquery.js" defer=""></script>
             <script class="u-script" type="text/javascript" src="js/nicepage.js" defer=""></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
             <style>
                 #carousel_bd30{
-                    /*background-image: url("images/manageUserBg.jpg");*/
                     background-color: #eee;
                 }
                 h1{
@@ -154,37 +162,46 @@
             <section class="u-clearfix u-image u-section-2" id="carousel_bd30" data-image-width="1620" data-image-height="1080">
                 <center> 
                     <h1>List Collection</h1>
-                    <h2 style="color:white;">Number of Collection ${a.getAllCollection().size()}</h2>
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Author</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:set var="pagesize" value="6"></c:set>
-                        <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
-                        <c:set var="NumPage" value="${a.getAllCollection().size()/6+1}"></c:set>
-                        <c:forEach items="${a.getAllCollection()}" var="b" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
-                            <tr>
-                                <td>${b.id}</td>
-                                <td>${b.name}</td>
-                                <td>${b.status}</td>
-                                <td>${b.accountID.id}</td>
-                                <td style="padding-left: 4px;padding-right: 4px;">
-                                    <c:set var="check" value="a${b.getId()}"></c:set>
-                                    <a style="padding-left: 4px;padding-right: 4px;" href="UpdateCollection?id=${b.getId()}">Update</a>
-                                    <a style="padding-left: 4px;padding-right: 4px;" href="DeleteCollection?id=${b.getId()}">Delete</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                    <button style="background-color: black;margin-bottom: 10px;border-radius: 20px;border-color: white;"><a style="color:white;" href="CreateCollection.jsp">Create new Collection</a></button>
+                    <h2 style="color:#000;">Number of Collection ${a.getAllCollection().size()}</h2>
+                <div class="container-fluid-lg">
+                    <div class="table-responsive">
 
-                </table>
+                        <table class="table table-bordered" >
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                    <th>Author</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <c:set var="pagesize" value="6"></c:set>
+                                <c:set var="page" value="${not empty param.page?param.page : 1}"></c:set>
+                                <c:set var="NumPage" value="${a.getAllCollection().size()/6+1}"></c:set>
+                                <c:forEach items="${a.getAllCollection()}" var="b" begin="${(page-1)*pagesize}" end="${(page*pagesize)-1}">
+                                    <tr>
+                                        <td>${b.id}</td>
+                                        <td>${b.name}</td>
+                                        <td>${b.status}</td>
+                                        <td>${b.accountID.id}</td>
+                                        <td style="padding-left: 4px;padding-right: 4px;">
+                                            <c:set var="check" value="a${b.getId()}"></c:set>
+                                            <a class="edit" title="Edit" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="UpdateCollection?id=${b.getId()}"><i
+                                                    class="material-icons">&#xE254;</i></a>
+                                            <a class="delete" title="Edit" data-toggle="tooltip" style="padding-left: 4px;padding-right: 4px;" href="DeleteCollection?id=${b.getId()}"><i
+                                                    class="material-icons">&#xE872;</i></a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                            <button style="background-color: black;margin-bottom: 10px;border-radius: 20px;border-color: white;"><a style="color:white;" href="CreateCollection.jsp">Create new Collection</a></button>
+
+                        </table>
+                    </div>
+                </div>
                 <a href="?page=1" class="previous"><<</a>
 
 
@@ -198,7 +215,7 @@
                     <a href="?page=1" class="previous"> < </a>
                 </c:if>
 
-                <a style="color:white;" href="">${page}</a>
+                <a style="color:#000;" href="">${page}</a>
 
                 <c:if  var="result" test="${page < NumPage.intValue()}">
                     <a href="?page=${page+1}" class="next"> > </a>

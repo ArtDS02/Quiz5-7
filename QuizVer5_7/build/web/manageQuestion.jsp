@@ -21,31 +21,8 @@
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
             <style>
-                /*                #carousel_bd30{
-                                    background-image: url("images/manageLightNovelbg.jpg");
-                                }
-                                h1{
-                                    margin-top: 50px;
-                                    color:white;
-                                }
-                                th{
-                                    background-color: rgba(0, 0, 0, 0.5);
-                                    width:250px;
-                                    border-radius: 15px;
-                                }
-                                td{
-                                    background-color: rgba(0, 0, 0, 0.5);
-                                    border-radius: 15px;
-                                }
-                                table{
-                
-                                    border: none;
-                                    text-align: center;
-                                    color: white;
-                                    font-size: 20px;
-                                }*/
+
                 #carousel_bd30{
-                    /*background-image: url("images/manageUserBg.jpg");*/
                     background-color: #eee;
                 }
                 h1{

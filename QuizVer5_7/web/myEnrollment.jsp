@@ -222,13 +222,17 @@
                 font-size: 20px;
                 font-weight: bold;
             }
+            #nav > li {
+                margin-bottom: 10px;
+            }
+
         </style>
         <!--        <h1 style="margin-top: 70px;font-family: courier, arial, helvetica;
                     ">QuestionList</h1>-->
         <!-- Navbar Start -->
         <div id="header">
             <!-- Begin: Nav -->
-            <div style="height: 45px; margin-left: 25px "  class="header-logo">
+            <div style="height: 30px; margin-left: 25px "  class="header-logo">
                 <p class="title">FLearn</p>
             </div>
             <div class="header-content">
