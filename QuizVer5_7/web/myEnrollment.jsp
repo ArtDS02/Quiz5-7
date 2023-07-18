@@ -271,7 +271,7 @@
         <div class="content">
             <div class="learning">
                 <div class="learning-content">
-                    <p> Collection ID</p>               
+                    <p> Exam ID</p>               
                 </div>
                 <div class="leaning-anwser">
                     <p> Score</p>    
