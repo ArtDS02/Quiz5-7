@@ -27,7 +27,7 @@
                 <lable class="register_text">Re-Password</lable>
                 <input type="password" class="register_input" name="repass">
                 <lable class="register_text">Phone</lable>
-                <input type="text" class="register_input" name="phone">
+                <input type="text" class="register_input" name="phone" pattern="[0-9]{10}" title="Vui lòng nhập số điện thoại gồm 10 chữ số" required>
                 <lable class="register_text">Email</lable>
                 <input type="text" class="register_input" name="email">
                 <lable class="register_text">Date of birth</lable>

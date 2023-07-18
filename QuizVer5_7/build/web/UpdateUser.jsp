@@ -22,13 +22,13 @@
                 <lable class="register_text">FirstName</lable>
                 <input type="text" class="register_input" name="FirstName">
                 <lable class="register_text">LastName</lable>
-                <input type="password" class="register_input" name="LastName">
+                <input type="text" class="register_input" name="LastName">
                 <lable class="register_text">UserName</lable>
-                <input type="password" class="register_input" name="UserName">
+                <input type="text" class="register_input" name="UserName">
                 <lable class="register_text">Password</lable>
-                <input type="text" class="register_input" name="Password">
+                <input type="password" class="register_input" name="Password">
                 <lable class="register_text">Phone</lable>
-                <input type="text" class="register_input" name="phone">
+                <input type="text" class="register_input" name="phone" pattern="[0-9]{10}" title="Vui lòng nhập số điện thoại gồm 10 chữ số" required>
                 <lable class="register_text">Email</lable>
                 <input type="text" class="register_input" name="email">
                 <lable class="register_text">Date of birth</lable>

@@ -50,7 +50,7 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
-                                            <input type="text" name="phonenumber" class="form-control" id="phone" value="${detail.phone}">
+                                            <input type="text" name="phonenumber" class="form-control" id="phone" value="${detail.phone}" pattern="[0-9]{10}" title="Vui lòng nhập số điện thoại gồm 10 chữ số">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
