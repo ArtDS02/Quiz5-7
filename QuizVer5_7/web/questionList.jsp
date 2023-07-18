@@ -295,11 +295,6 @@
                 <div class="option-test">
                     <a href="testoption?id=${requestScope.idd}"><i class="fa fa-solid fa fa-graduation-cap"></i>Test</a>
                 </div>
-                <c:if test="${sessionScope.accountS.id == requestScope.owner}"> 
-                    <div class="option-edit">
-                        <a href="EditOptionServlet?id=${requestScope.idd}"><i class="fa fa-solid fa fa-pen"></i>Edit</a>
-                    </div>
-                </c:if>
 
 
             </div>
