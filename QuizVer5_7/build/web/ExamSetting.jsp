@@ -128,7 +128,7 @@
                     </tr>
                     <tr>
                         <td>QuestionNumber:</td>
-                        <td><input name="questionNumber" type="text" class="form-control" required=""></td>
+                        <td><input name="questionNumber" type="number" class="form-control" required=""></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -138,6 +138,7 @@
                         <td>CollectionId:</td>
                         <td><input name="CollectionId" type="text" class="form-control" value="${collectionId}" ></td>
                     </tr>
+                    
                     <tr>
                         <td></td>
                         <td><input type="submit" class="btn btn-success" value="Submit"></td>

@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/web/manageQuestion.jsp</file>
-            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/web/manageCollection.jsp</file>
+            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/src/java/controller/TestOptionServlet.java</file>
+            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/web/myQuestionList.jsp</file>
+            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/src/java/controller/NewExam.java</file>
+            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/web/chooseTestOptionView.jsp</file>
+            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/web/ExamSetting.jsp</file>
+            <file>file:/C:/Users/Thinh/Desktop/PROJECT/Quiz5_7/QuizSystem-lastest/QuizVer5_7/src/java/controller/ShowExam.java</file>
         </group>
     </open-files>
 </project-private>
